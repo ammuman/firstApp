@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ammar WebApplication</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="app/controllers/MainCtrl.js"></script>
+    <script>src="app/design.css"</script>
+    <style>
+        input.ng-invalid.ng-dirty{border:3px solid red;}
+        span.success.ng-valid{border:1px solid green;}
+        button{
+            padding: 10px 12px;
+            background: #9229BA;
+            color: #fffbf7;
+                             ;}
+
+        td:hover{background-color: #94e5ff;}
+
+
+        table{background-color: #f1f7f8
+        }
+
+
+
+    </style>
+
+
+
+</head>
+<body ng-app="ammarApp">
+<div ng-controller="MainCtrl">
+    <div id="search">
+    <h3>Search for entry</h3>
+    <label>Name:</label>
+    <input type="text" ng-model="name" placeholder="Enter a name here">
+    </div>
+    <hr>
+
+    <div>
+
+        <form name="enter" ng-submit="">
+            <button type="button" ng-click="toAdd = !toAdd;">Add New Entry </button> <br>
+            <div>
+                <input type="text" name="a" ng-model="customer" placeholder="Enter customer name" ng-show="toAdd" required>
+                <span ng-show="enter.a.$error.required && enter.a.$dirty">Please enter the customer name</span> <br>
+            </div>
+
+            <div>
+                <input type="date" name="b" ng-model="order" placeholder="Enter the order date" ng-show="toAdd" required>
+                <span ng-show="enter.b.$error.required && enter.b.$dirty">Please enter the order date</span>
+                <span ng-show="enter.b.$error.date && enter.b.$dirty">Please enter in a date format</span><br>
+            </div>
+
+            <div>
+                <input type="date" name="c" ng-model="delivery"  placeholder="Enter the delivery date" ng-show="toAdd" required>
+                <span ng-show="enter.c.$error.required && enter.c.$dirty">Please enter the delivery date</span>
+                <span ng-show="enter.c.$error.date && enter.c.$dirty">Please enter in a date format</span><br>
+            </div>
+
+            <div>
+                <input type="number" min="0" step="1" name="d" ng-model="number" placeholder="Enter the order number" ng-show="toAdd" required>
+                <span ng-show="enter.d.$error.required && enter.d.$dirty">Please enter the order number</span>
+                <span ng-show="enter.d.$error.number">Please enter a numerical value </span><br>
+            </div>
+
+            <div>
+
+                <input type="number" min="0" step="1" name="e" ng-model="id" placeholder="Enter salesman's ID" ng-show="toAdd" required>
+                <span ng-show="enter.e.$error.required && enter.e.$dirty">Please enter the Salesman's ID number</span>
+                <span ng-show="enter.e.$error.number">Please enter a numerical value</span><br>
+
+
+
+            </div>
+
+            <div>
+               <input list="currentStat" name="dropdown box" ng-model="currentStatus" placeholder="Status" ng-show="toAdd" required>
+                <datalist id="currentStat" >
+                    <option value="Open" ng-click="currentStatus = Open">
+                    <option value="Closed" ng-click="currentStatus = Closed">
+                    <option value="Idle" ng-click="currentStatus = Idle">
+                   <option value ="Unavailable" ng-click = "currentStatus = Unavailable">
+                </datalist>
+            </div>
+
+
+
+            <button  ng-disabled="enter.$invalid" ng-show="toAdd"
+                    ng-click="toAdd = !toAdd;
+                    addSalesOrder();
+                    enter.a.$dirty=false;
+                    enter.b.$dirty=false;
+                    enter.c.$dirty=false;
+                    enter.d.$dirty=false;
+                    enter.e.$dirty=false;
+                    " >Submit</button> <br>
+
+
+        </form>
+        <table border="1px solid blue">
+
+            <th>Entry Number</th>
+            <th>Customer Name</th>
+            <th>Order Date</th>
+            <th>Delivery Date</th>
+            <th>Order Number</th>
+            <th>Salesman's ID</th>
+            <th>status</th>
+             <tr  ng-repeat="sales in salesOrderHeader | filter:name">
+             <td><button  ng-click="removeSaleOrder(sale.customerName)">X</button></td>
+            <td>{{$index+1}}</td>
+            <td>{{sales.customerName}}</td>
+            <td>{{sales.orderDate | date}}</td>
+            <td>{{sales.deliveryDate | date}}</td>
+            <td>{{sales.orderNumber}}</td>
+            <td>{{sales.salesmanID}}</td>
+            <td>{{sales.status}}</td>
+             </tr>
+        </table>
+
+
+
+    </div>
+
+</div>
+</body>
+</html>
