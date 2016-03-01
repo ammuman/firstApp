@@ -9,8 +9,8 @@ app.controller('MainCtrl',['$scope', function($scope){
         {
 
             customerName: "Ammar",
-            orderDate: "12/12/12",
-            deliveryDate:"12/21/21",
+            orderDate: "1999-01-05",
+            deliveryDate:"1990-12-08",
             orderNumber:"12345",
             status:"open",
             salesmanID:"09876",
@@ -20,14 +20,25 @@ app.controller('MainCtrl',['$scope', function($scope){
 
         {
             customerName: "John",
-            orderDate: "12/12/12",
-            deliveryDate:"12/21/21",
+            orderDate: "2012-09-13",
+            deliveryDate:"1995-13-12",
             orderNumber:"12345",
             status:"open",
             salesmanID:"09876",
             Notes: "None"
 
 
+
+        },
+
+        {
+            customerName:"Ali",
+            orderDate:"2011-09-12",
+            deliveryDate:"2012-11-11",
+            orderNumber:"78976897",
+            status:"Closed",
+            salesmanID:"79779",
+            Notes:"None"
 
         }
 
@@ -45,7 +56,7 @@ app.controller('MainCtrl',['$scope', function($scope){
         $scope.add.status= $scope.currentStatus;
         $scope.add.salesmanID = $scope.id;
 
-        $scope.salesOrderHeader.unshift($scope.add);
+        $scope.salesOrderHeader.push($scope.add);
 
         $scope.customer="";
         $scope.order="";
@@ -59,10 +70,12 @@ app.controller('MainCtrl',['$scope', function($scope){
 
     }
 
-    $scope.removeSaleOrder = function(item){
+    $scope.removeSaleOrder = function(sales){
 
 
-           $scope.salesOrderHeader.splice($scope.salesOrderHeader.indexOf($scope.salesOrderHeader), 1);
+          var idx =  $scope.salesOrderHeader.indexOf(sales);
+        var st = $scope.salesOrderHeader[idx];
+        $scope.salesOrderHeader.splice(idx,1);
 
     }
 

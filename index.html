@@ -11,18 +11,26 @@
     <style>
         input.ng-invalid.ng-dirty{border:3px solid red;}
         span.success.ng-valid{border:1px solid green;}
+
+
+
         button{
             padding: 10px 12px;
-            background: #9229BA;
-            color: #fffbf7;
-                             ;}
+            background: #3b91ff;
+            color: #fffbf7;}
+        button.ng-invalid{
+            padding: 10px 12px;
+            background: #d9e3ff;
+            color: #fffbf7;}
+        #remove{
+            padding: 5px 7px;
+            background: #ba1522;
+            color: #fffbf7;}
 
         td:hover{background-color: #94e5ff;}
 
-
-        table{background-color: #f1f7f8
-        }
-
+        table{background-color: #f1f7f8;
+              border-color: royalblue;}
 
 
     </style>
@@ -96,25 +104,25 @@
                     enter.c.$dirty=false;
                     enter.d.$dirty=false;
                     enter.e.$dirty=false;
-                    " >Submit</button> <br>
+                    " id="submit">Submit</button> <br> <hr>
 
 
         </form>
-        <table border="1px solid blue">
-
-            <th>Entry Number</th>
+        <table border="1px border-color:solid blue">
+            <th></th>
+            <th>Entry</th>
             <th>Customer Name</th>
             <th>Order Date</th>
             <th>Delivery Date</th>
             <th>Order Number</th>
             <th>Salesman's ID</th>
             <th>status</th>
-             <tr  ng-repeat="sales in salesOrderHeader | filter:name">
-             <td><button  ng-click="removeSaleOrder(sale.customerName)">X</button></td>
+             <tr  ng-repeat="sales in salesOrderHeader | orderBy:'customerName'|filter:name">
+             <td><button  ng-click="removeSaleOrder(sales)" id="remove">X</button></td>
             <td>{{$index+1}}</td>
             <td>{{sales.customerName}}</td>
-            <td>{{sales.orderDate | date}}</td>
-            <td>{{sales.deliveryDate | date}}</td>
+            <td>{{sales.orderDate | date:'fullDate'}}</td>
+            <td>{{sales.deliveryDate | date:'fullDate'}}</td>
             <td>{{sales.orderNumber}}</td>
             <td>{{sales.salesmanID}}</td>
             <td>{{sales.status}}</td>
