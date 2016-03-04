@@ -3,47 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Ammar WebApplication</title>
-
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="app.js"></script>
     <script src="app/controllers/MainCtrl.js"></script>
     <script>src="app/design.css"</script>
-    <style>
-        input.ng-invalid.ng-dirty{border:3px solid red;}
-        span.success.ng-valid{border:1px solid green;}
-
-
-
-        button{
-            padding: 10px 12px;
-            background: #3b91ff;
-            color: #fffbf7;}
-        button.ng-invalid{
-            padding: 10px 12px;
-            background: #d9e3ff;
-            color: #fffbf7;}
-        #remove{
-            padding: 5px 7px;
-            background: #ba1522;
-            color: #fffbf7;}
-
-        td:hover{background-color: #94e5ff;}
-
-        table{background-color: #f1f7f8;
-              border-color: royalblue;}
-
-
-    </style>
-
-
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 </head>
 <body ng-app="ammarApp">
 <div ng-controller="MainCtrl">
     <div id="search">
-    <h3>Search for entry</h3>
-    <label>Name:</label>
-    <input type="text" ng-model="name" placeholder="Enter a name here">
+        <h3>Search for entry</h3>
+        <label>Name:</label>
+        <input type="text" ng-model="name" placeholder="Enter a name here">
     </div>
     <hr>
 
@@ -85,19 +58,19 @@
             </div>
 
             <div>
-               <input list="currentStat" name="dropdown box" ng-model="currentStatus" placeholder="Status" ng-show="toAdd" required>
+                <input list="currentStat" name="dropdown box" ng-model="currentStatus" placeholder="Status" ng-show="toAdd" required>
                 <datalist id="currentStat" >
                     <option value="Open" ng-click="currentStatus = Open">
                     <option value="Closed" ng-click="currentStatus = Closed">
                     <option value="Idle" ng-click="currentStatus = Idle">
-                   <option value ="Unavailable" ng-click = "currentStatus = Unavailable">
+                    <option value ="Unavailable" ng-click = "currentStatus = Unavailable">
                 </datalist>
             </div>
 
 
 
             <button  ng-disabled="enter.$invalid" ng-show="toAdd"
-                    ng-click="toAdd = !toAdd;
+                     ng-click="toAdd = !toAdd;
                     addSalesOrder();
                     enter.a.$dirty=false;
                     enter.b.$dirty=false;
@@ -117,16 +90,16 @@
             <th>Order Number</th>
             <th>Salesman's ID</th>
             <th>status</th>
-             <tr  ng-repeat="sales in salesOrderHeader | orderBy:'customerName'|filter:name">
-             <td><button  ng-click="removeSaleOrder(sales)" id="remove">X</button></td>
-            <td>{{$index+1}}</td>
-            <td>{{sales.customerName}}</td>
-            <td>{{sales.orderDate | date:'fullDate'}}</td>
-            <td>{{sales.deliveryDate | date:'fullDate'}}</td>
-            <td>{{sales.orderNumber}}</td>
-            <td>{{sales.salesmanID}}</td>
-            <td>{{sales.status}}</td>
-             </tr>
+            <tr  ng-repeat="sales in salesOrderHeader | orderBy:'customerName'|filter:name">
+                <td><button  ng-click="removeSaleOrder(sales)" id="remove">X</button></td>
+                <td>{{$index+1}}</td>
+                <td>{{sales.customerName}}</td>
+                <td>{{sales.orderDate | date:'fullDate'}}</td>
+                <td>{{sales.deliveryDate | date:'fullDate'}}</td>
+                <td>{{sales.orderNumber}}</td>
+                <td>{{sales.salesmanID}}</td>
+                <td>{{sales.status}}</td>
+            </tr>
         </table>
 
 
