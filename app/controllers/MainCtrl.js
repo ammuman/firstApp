@@ -1,6 +1,8 @@
 app.controller('MainCtrl',['$scope', function($scope){
 
     $scope.toAdd = false;
+    $scope.sortRev = false;
+
 
 
 
@@ -21,7 +23,7 @@ app.controller('MainCtrl',['$scope', function($scope){
         {
             customerName: "John",
             orderDate: "2012-09-13",
-            deliveryDate:"1995-13-12",
+            deliveryDate:"1989-13-12",
             orderNumber:"12345",
             status:"open",
             salesmanID:"09876",
@@ -73,14 +75,14 @@ app.controller('MainCtrl',['$scope', function($scope){
     $scope.removeSaleOrder = function(sales){
 
 
-          var idx =  $scope.salesOrderHeader.indexOf(sales);
+        var idx =  $scope.salesOrderHeader.indexOf(sales);
         var st = $scope.salesOrderHeader[idx];
         $scope.salesOrderHeader.splice(idx,1);
 
     }
 
 
-
+    //$scope.sort = $scope.customerName;
 
 
 
