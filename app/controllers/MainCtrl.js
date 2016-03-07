@@ -1,15 +1,10 @@
 app.controller('MainCtrl',['$scope', function($scope){
 
     $scope.toAdd = false;
-    $scope.sortRev = false;
-
-
-
 
 
     $scope.salesOrderHeader = [
         {
-
             customerName: "Ammar",
             orderDate: "1999-01-05",
             deliveryDate:"1990-12-08",
@@ -43,8 +38,6 @@ app.controller('MainCtrl',['$scope', function($scope){
             Notes:"None"
 
         }
-
-
 
     ]
 
@@ -81,8 +74,20 @@ app.controller('MainCtrl',['$scope', function($scope){
 
     }
 
+    $scope.predicate = 'names';
+    $scope.reverse = true;
 
-    //$scope.sort = $scope.customerName;
+
+
+    $scope.order = function(predicate) {
+        $scope.predicate = predicate;
+        $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+    };
+
+
+    $scope.order('names',false);
+
+
 
 
 
