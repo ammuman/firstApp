@@ -85,7 +85,7 @@ app.controller('MainCtrl',['$scope', function($scope){
     };
 
 
-    $scope.order('names',false);
+    $scope.order('names',false);              <!-- allows reverse order -->
 
 
 
