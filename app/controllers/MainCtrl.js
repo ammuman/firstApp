@@ -74,7 +74,7 @@ app.controller('MainCtrl',['$scope', function($scope){
 
     }
 
-    $scope.predicate ='names';
+    $scope.predicate = 'customerName';
     $scope.reverse = false;
 
 
