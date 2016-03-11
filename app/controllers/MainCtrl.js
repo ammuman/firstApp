@@ -74,21 +74,18 @@ app.controller('MainCtrl',['$scope', function($scope){
 
     }
 
-    $scope.predicate = 'names';
-    $scope.reverse = true;
+    $scope.predicate ='names';
+    $scope.reverse = false;
 
 
 
-    $scope.order = function(predicate) {
-        $scope.predicate = predicate;
-        $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
-    };
+   /* $scope.order = function(predicate){
+
+         $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+         $scope.predicate = predicate;
+    }; */
 
 
-    $scope.order('names',false);              <!-- allows reverse order -->
-
-
-
-
+    //$scope.order('names',false); <!-- allows reverse order -->
 
 }]);

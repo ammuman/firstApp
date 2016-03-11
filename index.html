@@ -85,23 +85,17 @@
             <th></th>
             <th>Entry</th>
             <th>
-                <a href="#" ng-click="order('names')">Customer Name
-                    <span class="sortorder fa fa-caret-down" ng-show="predicate === 'names' && !reverse" ng-class="{reverse:false}"></span>
-                    <span class="sortorder fa fa-caret-up" ng-show="predicate ==='names' && reverse" ng-class="{reverse:true}"></span>
+                <a href="#" ng-click="predicate = 'names'; reverse != reverse;">Customer Name
+                    <span class="sortorder fa fa-caret-up" ng-show="'names' && reverse" ng-class="{reverse:reverse}"></span>
+                    <span class="sortorder fa fa-caret-down" ng-show="'names' && !reverse" ng-class="{reverse:reverse}"></span>
                 </a> <!-- allows reverse order -->
             </th>
-            <th>
-            <a href="#" ng-click="order('oDate')">Order Date
-                <span class="sortorder fa fa-caret-down" ng-show="predicate === oDate && !reverse" ng-class="{reverse:false}"></span>
-                <span class="sortorder fa fa-caret-up" ng-show="predicate ===oDate && reverse" ng-class="{reverse:true}"></span>
-            </a>
-
-            </th>
+            <th>OrderDate</th>
             <th>Delivery Date</th>
             <th>Order Number</th>
             <th>Salesman's ID</th>
             <th>status</th>
-            <tr  ng-repeat="sales in salesOrderHeader | orderBy:'customerName':reverse|filter:name"> //
+            <tr ng-repeat="sales in salesOrderHeader | orderBy:'customerName':reverse|filter:name">
                 <td><button  ng-click="removeSaleOrder(sales)" id="remove">X</button></td>
                 <td>{{$index+1}}</td>
                 <td>{{sales.customerName}}</td>
@@ -112,9 +106,6 @@
                 <td>{{sales.status}}</td>
             </tr>
         </table>
-
-
-
     </div>
 
 </div>
