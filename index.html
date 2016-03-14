@@ -30,13 +30,13 @@
             </div>
 
             <div>
-                <input type="date" name="b" ng-model="order" placeholder="Enter the order date" ng-show="toAdd" required>
+                <input type="date" name="b" ng-model="order" value ="{{order}}"  placeholder="Enter the order date" ng-show="toAdd" required>
                 <span ng-show="enter.b.$error.required && enter.b.$dirty">Please enter the order date</span>
                 <span ng-show="enter.b.$error.date && enter.b.$dirty">Please enter in a date format</span><br>
             </div>
 
             <div>
-                <input type="date" name="c" ng-model="delivery"  placeholder="Enter the delivery date" ng-show="toAdd" required>
+                <input type="date" name="c" ng-model="delivery"  value="{{delivery}}" placeholder="Enter the delivery date" ng-show="toAdd" required>
                 <span ng-show="enter.c.$error.required && enter.c.$dirty">Please enter the delivery date</span>
                 <span ng-show="enter.c.$error.date && enter.c.$dirty">Please enter in a date format</span><br>
             </div>
@@ -96,7 +96,12 @@
                 <span class="fa fa-caret-down" ng-show="predicate == 'orderDate' && !reverse"></span>
                 </a>
             </th>
-            <th>Delivery Date</th>
+            <th>
+                <a href="#" ng-click="predicate='deliveryDate'; reverse = !reverse">Delivery Date
+                    <span class="fa fa-caret-up" ng-show="predicate == 'deliveryDate' && reverse"></span>
+                    <span class="fa fa-caret-down" ng-show="predicate == 'deliveryDate' && !reverse"></span>
+                </a>
+            </th>
             <th>Order Number</th>
             <th>Salesman's ID</th>
             <th>status</th>

@@ -1,4 +1,4 @@
-app.controller('MainCtrl',['$scope', function($scope){
+app.controller('MainCtrl',['$scope','$filter', function($scope, $filter){
 
     $scope.toAdd = false;
 
@@ -45,8 +45,9 @@ app.controller('MainCtrl',['$scope', function($scope){
 
         $scope.add = new Object();
         $scope.add.customerName = $scope.customer;
-       // $scope.order = $filter('date')($scope.order);
+        $scope.order = $filter('date')($scope.order, "yyyy-MM-dd");
         $scope.add.orderDate = $scope.order;
+        $scope.delivery = $filter('date')($scope.delivery, "yyyy-MM-dd");
         $scope.add.deliveryDate = $scope.delivery;
         $scope.add.orderNumber = $scope.number;
         $scope.add.status= $scope.currentStatus;
