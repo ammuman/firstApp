@@ -17,7 +17,7 @@ app.controller('MainCtrl',['$scope', function($scope){
 
         {
             customerName: "John",
-            orderDate: "2012-09-13",
+            orderDate: "2015-09-13",
             deliveryDate:"1989-13-12",
             orderNumber:"12345",
             status:"open",
@@ -45,6 +45,7 @@ app.controller('MainCtrl',['$scope', function($scope){
 
         $scope.add = new Object();
         $scope.add.customerName = $scope.customer;
+       // $scope.order = $filter('date')($scope.order);
         $scope.add.orderDate = $scope.order;
         $scope.add.deliveryDate = $scope.delivery;
         $scope.add.orderNumber = $scope.number;
@@ -74,7 +75,7 @@ app.controller('MainCtrl',['$scope', function($scope){
 
     }
 
-    $scope.predicate = 'customerName';
+    $scope.predicate = 'orderDate';
     $scope.reverse = false;
 
 
