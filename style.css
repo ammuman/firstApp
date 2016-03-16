@@ -1,4 +1,4 @@
-input.ng-invalid.ng-dirty{
+input.ng-invalid.ng-dirty.ng-not-empty{
     border:3px solid red;
 }
 span.success.ng-valid{

@@ -16,7 +16,18 @@
     <div id="search">
         <h3>Search for entry</h3>
         <label>Name:</label>
-        <input type="text" ng-model="name" placeholder="Enter a name here">
+        <input type="text" ng-model="search.customerName" placeholder="Enter a name here">
+
+        <label>Order Number</label>
+        <input type="number" ng-model="search.orderNumber" placeholder="Enter order number here" name="order" min="0" step="1" required>
+            <span ng-show="enter.order.$error.required && enter.order.$dirty">Please enter the Salesman's ID number</span>
+            <span ng-show="enter.order.$error.number">Please enter a numerical value</span>
+
+        <label>Salesman ID:</label>
+        <input type="number" ng-model="search.salesmanID" placeholder="Enter the salesman's ID" name="ID" min="0" step="1" required>
+            <span ng-show="enter.ID.$error.required && enter.ID.$dirty">Please enter the Salesman's ID number</span>
+            <span ng-show="enter.ID.$error.number">Please enter a numerical value</span>
+        <br>
     </div>
     <hr>
 
@@ -105,10 +116,10 @@
             <th>Order Number</th>
             <th>Salesman's ID</th>
             <th>status</th>
-            <tr ng-repeat="sales in salesOrderHeader | orderBy: predicate:reverse|filter:name">
+            <tr ng-repeat="sales in salesOrderHeader | orderBy: predicate:reverse|filter:search|filter:((searchID===null)?undefined:searchID)">
                 <td><button  ng-click="removeSaleOrder(sales)" id="remove">X</button></td>
                 <td>{{$index+1}}</td>
-                <td>{{sales.customerName}}</td>
+                <td >{{sales.customerName}}</td>
                 <td>{{sales.orderDate | date:'fullDate'}}</td>
                 <td>{{sales.deliveryDate | date:'fullDate'}}</td>
                 <td>{{sales.orderNumber}}</td>

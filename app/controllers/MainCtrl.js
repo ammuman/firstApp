@@ -76,7 +76,7 @@ app.controller('MainCtrl',['$scope','$filter', function($scope, $filter){
 
     }
 
-    $scope.predicate = 'orderDate';
+    $scope.predicate = 'customerName';
     $scope.reverse = false;
 
 
